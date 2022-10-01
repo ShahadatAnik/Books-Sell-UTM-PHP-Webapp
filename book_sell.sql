@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 01:42 PM
+-- Generation Time: Oct 01, 2022 at 02:03 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,56 @@ SET time_zone = "+00:00";
 --
 -- Database: `book_sell`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `borrow_book`
+--
+
+CREATE TABLE `borrow_book` (
+  `id` int(11) NOT NULL,
+  `owner_id` int(11) NOT NULL,
+  `book_name` varchar(50) NOT NULL,
+  `author_name` varchar(50) NOT NULL,
+  `book_version` varchar(20) NOT NULL,
+  `book_publication` varchar(50) NOT NULL,
+  `borrow_time` int(11) NOT NULL,
+  `borrow_status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donate_book`
+--
+
+CREATE TABLE `donate_book` (
+  `id` int(11) NOT NULL,
+  `owner_id` int(11) NOT NULL,
+  `book_name` varchar(50) NOT NULL,
+  `author_name` varchar(50) NOT NULL,
+  `book_version` varchar(20) NOT NULL,
+  `book_publication` varchar(50) NOT NULL,
+  `donate_status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sell_book`
+--
+
+CREATE TABLE `sell_book` (
+  `id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL,
+  `book_name` varchar(50) NOT NULL,
+  `author_name` varchar(50) NOT NULL,
+  `book_version` varchar(20) NOT NULL,
+  `book_publication` varchar(50) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `sold_status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -51,6 +101,24 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `number`, `password`, `a
 --
 
 --
+-- Indexes for table `borrow_book`
+--
+ALTER TABLE `borrow_book`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `donate_book`
+--
+ALTER TABLE `donate_book`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sell_book`
+--
+ALTER TABLE `sell_book`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -59,6 +127,24 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `borrow_book`
+--
+ALTER TABLE `borrow_book`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `donate_book`
+--
+ALTER TABLE `donate_book`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sell_book`
+--
+ALTER TABLE `sell_book`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
