@@ -15,12 +15,15 @@ if (!$conn) {
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
     if ($username != "" && $password != "") {
         if ($password == $repassword) {
             $encpt_password = hash('sha256', $password);
-            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$encpt_password')";
+            $sql = "INSERT INTO users (username, name, email, number, password) VALUES ('$username', '$name', '$email','$phone', '$encpt_password')";
             if (mysqli_query($conn, $sql)) {
                 echo "User Created Successfully";
                 header('location:login.php');
@@ -66,10 +69,14 @@ mysqli_close($conn);
                             <h2 class="card-title mt-3 mb-4 text-center">
                                 BOOKS@UTM
                             </h2>
-                            <form>
+                            <form method="post">
                                 <div class="form-group input-group flex-nowrap mb-3">
                                     <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user" aria-hidden="true"></i></span>
                                     <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required />
+                                </div>
+                                <div class="form-group input-group flex-nowrap mb-3">
+                                    <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input type="text" name="name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="addon-wrapping" required />
                                 </div>
                                 <div class="form-group input-group flex-nowrap mb-3">
                                     <span class="input-group-text" id="addon-wrapping"><i class="fa fa-envelope" aria-hidden="true"></i></span>
@@ -88,7 +95,7 @@ mysqli_close($conn);
                                     <input type="password" name="repassword" class="form-control" placeholder="Re-Password" aria-label="Re-Password" aria-describedby="addon-wrapping" required />
                                 </div>
                                 <div class="form-group mb-5">
-                                    <button type="submit" class="btn btn-warning btn-block fw-bold">
+                                    <button type="submit" name="submit" class="btn btn-warning btn-block fw-bold">
                                         Create Account
                                     </button>
                                 </div>
