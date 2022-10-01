@@ -119,9 +119,9 @@ if ($loggedin != 'true') {
 
                                     <?php
                                     if ($row["approved"] == 1) {
-                                        echo "<a href='approve_student.php?id=" . $row["id"] . "' class='btn btn-danger'>Disapprove</a>";
+                                        echo "<a href='unapprove_student.php?id=".$row["id"]."' class='btn btn-danger'>Disapprove</a>";
                                     } else {
-                                        echo "<a href='unapprove_student.php?id=" . $row["id"] . "' class='btn btn-success'>Approve</a>";
+                                        echo "<a href='approve_student.php?id=".$row["id"]."' class='btn btn-success'>Approve</a>";
                                     }
                                     ?>
 
