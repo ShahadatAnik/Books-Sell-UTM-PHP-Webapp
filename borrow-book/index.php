@@ -1,11 +1,19 @@
 <?php
+
 session_start();
 $loggedin = $_SESSION['logedin'];
 if ($loggedin != 'true') {
-    header('location:login.php');
+    header('location:../login.php');
 } else {
+    if($_SESSION['username']=="admin"){
+        header('location:../super_admin.php');
+    }
+    if($_SESSION['approved']!=1 && $_SESSION['username']!="admin"){
+        header('location:../not_confirmed.php');
+    }
     $username = $_SESSION['username'];
 }
+
 
 ?>
 
