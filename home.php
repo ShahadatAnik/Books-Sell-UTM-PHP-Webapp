@@ -51,7 +51,7 @@ if ($loggedin != 'true') {
                             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-decoration-none" href="#">Link</a>
+                            <a class="nav-link  text-decoration-none" href="listing/listing.php">Your Listings</a>
                         </li>
                     </ul>
                     <div class="d-flex ">
