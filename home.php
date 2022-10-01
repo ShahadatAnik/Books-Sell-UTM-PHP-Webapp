@@ -4,10 +4,10 @@ $loggedin = $_SESSION['logedin'];
 if ($loggedin != 'true') {
     header('location:login.php');
 } else {
-    if($_SESSION['username']=="admin"){
+    if ($_SESSION['username'] == "admin") {
         header('location:super_admin.php');
     }
-    if($_SESSION['approved']!=1 && $_SESSION['username']!="admin"){
+    if ($_SESSION['approved'] != 1 && $_SESSION['username'] != "admin") {
         header('location:not_confirmed.php');
     }
     $username = $_SESSION['username'];
@@ -24,6 +24,17 @@ if ($loggedin != 'true') {
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .card {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            box-shadow: 10px 12px 12px 4px #e9ecef;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>

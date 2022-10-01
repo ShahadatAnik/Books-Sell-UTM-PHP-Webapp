@@ -13,8 +13,6 @@ if ($loggedin != 'true') {
     }
     $username = $_SESSION['username'];
 }
-
-
 ?>
 
 <html>
