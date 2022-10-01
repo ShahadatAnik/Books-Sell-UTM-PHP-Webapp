@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT id, password from  users where username = '$username'";
+    $sql = "SELECT id, password, approved from  users where username = '$username'";
     $res = mysqli_query($conn, $sql);
     if (mysqli_num_rows($res) > 0) {
         // output data of each row
@@ -28,7 +28,8 @@ if (isset($_POST['submit'])) {
             if ($row["password"] == hash('sha256', $password)) {
                 $_SESSION['logedin'] = 'true';
                 $_SESSION['username'] = $username;
-                $_SESSION['doctorid'] = $row["id"];
+                $_SESSION['studentid'] = $row["id"];
+                $_SESSION['approved'] = $row["approved"];
                 header('location:home.php');
             } else {
                 $errors = "Wrong username/password combination";
