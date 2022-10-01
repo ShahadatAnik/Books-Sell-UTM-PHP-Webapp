@@ -35,9 +35,8 @@ $book_name = $_POST['book_name'];
 $author_name = $_POST['author_name'];
 $book_version = $_POST['book_version'];
 $book_publication = $_POST['book_publication'];
-$borrow_time = $_POST['borrow_time'];
 
-$sql = "INSERT INTO borrow_book (owner_id, book_name, author_name, book_version, book_publication, borrow_time) VALUES ('$owner_id', '$book_name', '$author_name', '$book_version', '$book_publication', '$borrow_time')";
+$sql = "INSERT INTO donate_book (owner_id, book_name, author_name, book_version, book_publication) VALUES ('$owner_id', '$book_name', '$author_name', '$book_version', '$book_publication')";
 if (mysqli_query($conn, $sql)) {
     echo "Book Listed Successfully";
     header('location:index.php');
@@ -92,7 +91,7 @@ mysqli_close($conn);
         <div class="position-absolute top-50 start-50 translate-middle">
 <div class="p-3 mb-2 bg-dark text-white rounded">
 <form method="post">
-<h1>List for borrow book</h1>
+<h1>List for Donation books</h1>
     <table class="table table-dark table-hover">
         <tr>
             <td>
@@ -123,14 +122,6 @@ mysqli_close($conn);
             <div class="form-floating">
             <input type="text" name="book_publication" size="20" maxlength="100" class="form-control" id="floatingInput" placeholder="book_publication"/>
             <label for="floatingInput" class="text-dark">Book Publication</label>
-            </div>    
-        </td>
-        </tr>
-        <tr>
-            <td>
-            <div class="form-floating">
-            <input type="number" name="borrow_time" size="20" maxlength="20" class="form-control" id="floatingInput" placeholder="borrow_time"/>
-            <label for="floatingInput" class="text-dark">Borrow time in days</label>
             </div>    
         </td>
         </tr>

@@ -17,7 +17,7 @@ if ($loggedin != 'true') {
 <html>
 
 <head>
-    <title>Sign Up</title>
+    <title>Donate books</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -52,7 +52,52 @@ if ($loggedin != 'true') {
             </div>
         </nav>
         <!-- grid -->
-        <h1> Donate Book</h1>
+        <a href="list_for_donation.php" class="btn btn-primary">List a book for donation</a>
+        <h1> Get Donated Book</h1>
+                    <?php
+                    $dbservername = "localhost";
+                    $dbusername = "root";
+                    $dbpassword = "";
+                    $dbname = "book_sell";
+                    $conn = mysqli_connect($dbservername, $dbusername, $dbpassword, $dbname);
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    $sql = "SELECT * from donate_book where donate_status=0";
+                    $res = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($res) > 0) {
+                        $num = 1;
+                        echo "<table border='1' width='100%' class='table table-dark table-hover'>";
+                        echo "<tr>";
+                        echo "<th>Sr No.</th>";
+                        echo "<th>Book name</th>";
+                        echo "<th>Author Name</th>";
+                        echo "<th>Book Version</th>";
+                        echo "<th>Book Publication</th>";
+                        echo "<th>Get</th>";
+                        echo "</tr>";
+                        while($row = mysqli_fetch_assoc($res)) {
+                            echo "<tr>";
+                            echo "<td>".$num."</td>";
+                            echo "<td>".$row["book_name"]."</td>";
+                            echo "<td>".$row["author_name"]."</td>";
+                            echo "<td>".$row["book_version"]."</td>";
+                            echo "<td>".$row["book_publication"]."</td>";
+                            if($_SESSION['studentid']==$row['owner_id']){
+                                echo "<td><a href='mark_as_donated.php?book_id=".$row['id']."'>Mark as Donated</a></td>";
+                            }
+                            else{
+                                echo "<td><a href='get_book.php?seller_id=".$row['owner_id']."'>Get the Book</a></td>";
+                            }
+                            echo "</tr>";
+                            $num++;
+                        }
+                        echo "</table>";
+                        
+                    } else {
+                        echo "0 results";
+                    }
+?>
     </div>
     <script>
         if (window.history.replaceState) {
