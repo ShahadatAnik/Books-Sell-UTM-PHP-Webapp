@@ -52,6 +52,24 @@ if ($loggedin != 'true') {
             </div>
         </nav>
         <!-- grid -->
+        <form method="post">
+<h1>Search</h1>
+    <table class="table table-dark table-hover">
+        <tr>
+            <td>
+            <div class="form-floating">
+            <input type="text" name="book_name" size="20" maxlength="20" class="form-control" id="floatingInput" placeholder="book_name"/>
+            <label for="floatingInput" class="text-dark">Enter Book Name</label>
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="submit" value="Search" class="btn btn-outline-light"/>
+            </td>
+        </tr>
+    </table>
+</form>
         <h1> Buy Book</h1>
                     <?php
                     $dbservername = "localhost";
@@ -62,7 +80,14 @@ if ($loggedin != 'true') {
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql = "SELECT * from sell_book where sold_status=0";
+                    if(isset($_POST['submit'])){
+                        $book_name = $_POST['book_name'];
+                        $sql = "SELECT * FROM sell_book WHERE sold_status=0 and book_name LIKE '%$book_name%'";
+                    }
+                    else{
+                        $sql = "SELECT * from sell_book where sold_status=0";
+                    }
+                    
                     $res = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($res) > 0) {
                         $num = 1;

@@ -52,7 +52,26 @@ if ($loggedin != 'true') {
             </div>
         </nav>
         <!-- grid -->
+        
         <a href="list_for_donation.php" class="btn btn-primary">List a book for donation</a>
+        <form method="post">
+<h1>Search</h1>
+    <table class="table table-dark table-hover">
+        <tr>
+            <td>
+            <div class="form-floating">
+            <input type="text" name="book_name" size="20" maxlength="20" class="form-control" id="floatingInput" placeholder="book_name"/>
+            <label for="floatingInput" class="text-dark">Enter Book Name</label>
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="submit" value="Search" class="btn btn-outline-light"/>
+            </td>
+        </tr>
+    </table>
+</form>
         <h1> Get Donated Book</h1>
                     <?php
                     $dbservername = "localhost";
@@ -63,7 +82,13 @@ if ($loggedin != 'true') {
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql = "SELECT * from donate_book where donate_status=0";
+                    if(isset($_POST['submit'])){
+                        $book_name = $_POST['book_name'];
+                        $sql = "SELECT * FROM donate_book WHERE donate_status=0 and book_name LIKE '%$book_name%'";
+                    }
+                    else{
+                        $sql = "SELECT * from donate_book where donate_status=0";
+                    }
                     $res = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($res) > 0) {
                         $num = 1;
