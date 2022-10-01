@@ -4,6 +4,9 @@ $loggedin = $_SESSION['logedin'];
 if ($loggedin != 'true') {
     header('location:login.php');
 } else {
+    if($_SESSION['username']=="admin"){
+        header('location:super_admin.php');
+    }
     $username = $_SESSION['username'];
 }
 
