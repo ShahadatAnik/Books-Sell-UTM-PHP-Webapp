@@ -14,7 +14,6 @@ if ($loggedin != 'true') {
 }
 
 ?>
-<!-- <button class="btn btn-danger" onclick="window.location.href='login.php'">Logout</button> -->
 <html lang="en">
 
 <head>
@@ -41,7 +40,7 @@ if ($loggedin != 'true') {
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand text-decoration-none border border-dark border-3 rounded px-2" href="home.php"><b>BOOKS@UTM</b></a>
+                <a class="navbar-brand border border-dark border-3 rounded px-2" href="home.php"><b>BOOKS@UTM</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span><i class="fa fa-caret-square-o-down" aria-hidden="true"></i></span>
                 </button>
@@ -51,7 +50,19 @@ if ($loggedin != 'true') {
                             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-decoration-none" href="listing/listing.php">Your Listings</a>
+                            <a class="nav-link" href="sell-book">Sell</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buy-book">Buy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="borrow-book">Borrow</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="donate-book">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="listing">History</a>
                         </li>
                     </ul>
                     <div class="d-flex ">
@@ -64,12 +75,13 @@ if ($loggedin != 'true') {
                 </div>
             </div>
         </nav>
+        <div class="background-image"></div>
         <!-- grid -->
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 ">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 justify-content-center h-75">
             <div class="col d-flex justify-content-center mt-4">
-                <div class="card shadow bg-body rounded" style="width: 350px;">
+                <div class="card shadow rounded justify-content-center" style="width: 350px; background-color: #e3e154; ">
                     <a href="buy-book" class="text-decoration-none text-dark">
-                        <img src="img/book1.jpg" class="card-img-top" alt="...">
+                        <!-- <img src="img/book1.jpg" class="card-img-top" alt="..."> -->
                         <div class="card-body text-center">
                             <p class="card-text fw-bold fs-3">Buy Book</p>
                         </div>
@@ -77,9 +89,9 @@ if ($loggedin != 'true') {
                 </div>
             </div>
             <div class="col d-flex justify-content-center mt-4">
-                <div class="card shadow bg-body rounded" style="width: 350px;">
+                <div class="card shadow rounded justify-content-center " style="width: 350px; background-color: #e3e154;">
                     <a href="sell-book" class="text-decoration-none text-dark">
-                        <img src="img/book1.jpg" class="card-img-top" alt="...">
+                        <!-- <img src="img/book1.jpg" class="card-img-top" alt="..."> -->
                         <div class="card-body text-center">
                             <p class="card-text fw-bold fs-3">Sell Book</p>
                         </div>
@@ -87,9 +99,9 @@ if ($loggedin != 'true') {
                 </div>
             </div>
             <div class="col d-flex justify-content-center mt-4">
-                <div class="card shadow bg-body rounded" style="width: 350px;">
+                <div class="card shadow rounded justify-content-center" style="width: 350px; background-color: #e3e154;">
                     <a href="borrow-book" class="text-decoration-none text-dark">
-                        <img src="img/book1.jpg" class="card-img-top" alt="...">
+                        <!-- <img src="img/book1.jpg" class="card-img-top" alt="..."> -->
                         <div class="card-body text-center">
                             <p class="card-text fw-bold fs-3">Borrow Book</p>
                         </div>
@@ -97,9 +109,9 @@ if ($loggedin != 'true') {
                 </div>
             </div>
             <div class="col d-flex justify-content-center mt-4">
-                <div class="card shadow bg-body rounded" style="width: 350px;">
+                <div class="card shadow rounded justify-content-center" style="width: 350px; background-color: #e3e154;">
                     <a href="donate-book" class="text-decoration-none text-dark">
-                        <img src="img/book1.jpg" class="card-img-top" alt="...">
+                        <!-- <img src="img/book1.jpg" class="card-img-top" alt="..."> -->
                         <div class="card-body text-center">
                             <p class="card-text fw-bold fs-3">Donate Book</p>
                         </div>

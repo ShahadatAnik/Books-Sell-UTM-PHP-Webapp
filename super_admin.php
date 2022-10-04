@@ -32,12 +32,24 @@ if ($loggedin != 'true') {
                     <span><i class="fa fa-caret-square-o-down" aria-hidden="true"></i></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-decoration-none" href="#">Link</a>
+                            <a class="nav-link" href="sell-book">Sell</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buy-book">Buy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="borrow-book">Borrow</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="donate-book">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="listing">History</a>
                         </li>
                     </ul>
                     <div class="d-flex ">
@@ -54,8 +66,7 @@ if ($loggedin != 'true') {
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">View
-                    News</h1>
+                <h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">Student List</h1>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -119,9 +130,9 @@ if ($loggedin != 'true') {
 
                                     <?php
                                     if ($row["approved"] == 1) {
-                                        echo "<a href='unapprove_student.php?id=".$row["id"]."' class='btn btn-danger'>Disapprove</a>";
+                                        echo "<a href='unapprove_student.php?id=" . $row["id"] . "' class='btn btn-danger'>Disapprove</a>";
                                     } else {
-                                        echo "<a href='approve_student.php?id=".$row["id"]."' class='btn btn-success'>Approve</a>";
+                                        echo "<a href='approve_student.php?id=" . $row["id"] . "' class='btn btn-success'>Approve</a>";
                                     }
                                     ?>
 
@@ -141,8 +152,7 @@ if ($loggedin != 'true') {
             window.history.replaceState(null, null, window.location.href);
         }
     </script>
-    <script src="jquery-3.5.1.slim.min.js"></script>
-    <script src="popper.min.js"></script>
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 
