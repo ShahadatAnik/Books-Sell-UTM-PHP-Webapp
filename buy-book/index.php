@@ -4,10 +4,10 @@ $loggedin = $_SESSION['logedin'];
 if ($loggedin != 'true') {
     header('location:../login.php');
 } else {
-    if($_SESSION['username']=="admin"){
+    if ($_SESSION['username'] == "admin") {
         header('location:../super_admin.php');
     }
-    if($_SESSION['approved']!=1 && $_SESSION['username']!="admin"){
+    if ($_SESSION['approved'] != 1 && $_SESSION['username'] != "admin") {
         header('location:../not_confirmed.php');
     }
     $username = $_SESSION['username'];
@@ -35,10 +35,22 @@ if ($loggedin != 'true') {
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../home.php">Home</a>
+                            <a class="nav-link" href="../home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-decoration-none" href="#">Link</a>
+                            <a class="nav-link" href="../sell-book">Sell</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="buy-book">Buy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../borrow-book">Borrow</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../donate-book">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../listing">History</a>
                         </li>
                     </ul>
                     <div class="d-flex ">
@@ -52,87 +64,76 @@ if ($loggedin != 'true') {
             </div>
         </nav>
         <!-- grid -->
-        <form method="post">
-<h1>Search</h1>
-    <table class="table table-dark table-hover">
-        <tr>
-            <td>
-            <div class="form-floating">
-            <input type="text" name="book_name" size="20" maxlength="20" class="form-control" id="floatingInput" placeholder="book_name"/>
-            <label for="floatingInput" class="text-dark">Enter Book Name</label>
-            </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" name="submit" value="Search" class="btn btn-outline-light"/>
-            </td>
-        </tr>
-    </table>
-</form>
-        <h1> Buy Book</h1>
-                    <?php
-                    $dbservername = "localhost";
-                    $dbusername = "root";
-                    $dbpassword = "";
-                    $dbname = "book_sell";
-                    $conn = mysqli_connect($dbservername, $dbusername, $dbpassword, $dbname);
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    if(isset($_POST['submit'])){
-                        $book_name = $_POST['book_name'];
-                        $sql = "SELECT * FROM sell_book WHERE sold_status=0 and book_name LIKE '%$book_name%'";
-                    }
-                    else{
-                        $sql = "SELECT * from sell_book where sold_status=0";
-                    }
-                    
-                    $res = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($res) > 0) {
-                        $num = 1;
-                        echo "<table border='1' width='100%' class='table table-dark table-hover'>";
-                        echo "<tr>";
-                        echo "<th>Sr No.</th>";
-                        echo "<th>Book name</th>";
-                        echo "<th>Author Name</th>";
-                        echo "<th>Book Version</th>";
-                        echo "<th>Book Publication</th>";
-                        echo "<th>Amount</th>";
-                        echo "<th>Buy</th>";
-                        echo "</tr>";
-                        while($row = mysqli_fetch_assoc($res)) {
-                            echo "<tr>";
-                            echo "<td>".$num."</td>";
-                            echo "<td>".$row["book_name"]."</td>";
-                            echo "<td>".$row["author_name"]."</td>";
-                            echo "<td>".$row["book_version"]."</td>";
-                            echo "<td>".$row["book_publication"]."</td>";
-                            echo "<td>".$row["amount"]."</td>";
-                            if($_SESSION['studentid']==$row['seller_id']){
-                                echo "<td><a href='mark_as_sold.php?book_id=".$row['id']."'>Mark as Sold</a></td>";
-                            }
-                            else{
-                                echo "<td><a href='buy_book.php?seller_id=".$row['seller_id']."'>Buy</a></td>";
-                            }
-                            echo "</tr>";
-                            $num++;
-                        }
-                        echo "</table>";
-                        
-                    } else {
-                        echo "0 results";
-                    }
-?>
+        <div class="text-center shadow p-3 mt-2  rounded" style="background-color: #e3e154;">
+            <h1 class="display-4">Buy Books</h1>
+            <form class="form-inline" method="POST">
+                <div class="input-group col-md-6">
+                    <input type="text" name="book_name" class="form-control" placeholder="Search Books Here..." required />
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" name="submit"> Search <i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-4 mt-2">
+            <?php
+            $dbservername = "localhost";
+            $dbusername = "root";
+            $dbpassword = "";
+            $dbname = "book_sell";
+            $conn = mysqli_connect($dbservername, $dbusername, $dbpassword, $dbname);
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            if (isset($_POST['submit'])) {
+                $book_name = $_POST['book_name'];
+                $sql = "SELECT * FROM sell_book WHERE sold_status=0 and book_name LIKE '%$book_name%'";
+            } else {
+                $sql = "SELECT * from sell_book where sold_status=0";
+            }
+
+            $res = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($res) > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+            ?>
+                    <div class="col d-flex justify-content-center mt-2">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $row["book_name"]; ?></h5>
+                                <footer class="blockquote-footer mt-1 text-capitalize"><?= $row["author_name"]; ?> <cite class="fw-bold">v<?= $row["book_version"]; ?></cite></footer>
+                                <p class="card-text"><?= $row["book_publication"]; ?></p>
+                                <p class="card-text fs-5 fw-bold">MYR <?= $row["amount"]; ?></p>
+                                <?php
+                                if ($_SESSION['studentid'] == $row['seller_id']) {
+                                    echo "<a class='btn btn-danger' href='mark_as_sold.php?book_id=" . $row['id'] . "'>Mark as Sold</a>";
+                                } else {
+                                    echo "<a class='btn btn-primary' href='details.php?id=" . $row['seller_id'] . "'>Buy</a>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+            <?php }
+            } else {
+                echo "
+                <div class='d-flex '>
+                    <div class='flex-grow-1 alert alert-danger text-center' role='alert'>
+                        No Books Found
+                    </div>
+                </div>
+                ";
+            }
+            ?>
+        </div>
     </div>
     <script>
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
     </script>
-    <script src="jquery-3.5.1.slim.min.js"></script>
-    <script src="popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.5.1.slim.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

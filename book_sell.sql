@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 08:44 PM
+-- Generation Time: Oct 04, 2022 at 03:51 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,9 @@ CREATE TABLE `borrow_book` (
 
 INSERT INTO `borrow_book` (`id`, `owner_id`, `book_name`, `author_name`, `book_version`, `book_publication`, `borrow_time`, `borrow_status`) VALUES
 (1, 1, 'dawd', 'dad', 'dada', 'dad', 5, 0),
-(2, 2, 'dad', 'fafa', 'faf', 'affa', 2, 0);
+(2, 2, 'dad', 'fafa', 'faf', 'affa', 2, 0),
+(3, 4, 'English For Today', 'Anik', '3.0', 'Anik Publication CTG', 0, 1),
+(4, 4, 'English For Today', 'Shahadat Anik', '3.0', 'Anik Publication CTG', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,8 @@ CREATE TABLE `donate_book` (
 INSERT INTO `donate_book` (`id`, `owner_id`, `book_name`, `author_name`, `book_version`, `book_publication`, `donate_status`) VALUES
 (1, 2, 'fada', 'adad', 'adad', 'adad', 0),
 (2, 1, 'dawd', 'dada', 'dad', 'dada', 0),
-(3, 1, 'dada', 'dada', 'dadad', 'ada', 0);
+(3, 1, 'dada', 'dada', 'dadad', 'ada', 0),
+(4, 4, 'English For Today', 'Shahadat Anik', '3', 'Anik Publication CTG', 1);
 
 -- --------------------------------------------------------
 
@@ -93,10 +96,11 @@ CREATE TABLE `sell_book` (
 --
 
 INSERT INTO `sell_book` (`id`, `seller_id`, `book_name`, `author_name`, `book_version`, `book_publication`, `amount`, `sold_status`) VALUES
-(1, 1, 'gg', 'gg', 'gg', 'gg', 25, 0),
+(1, 1, 'gg', 'gg', '1.0', 'gg', 25, 0),
 (2, 1, 'faf', 'afa', 'fafa', 'affa', 15, 0),
 (3, 2, 'rawfa', 'afaf', 'afaf', 'afaf', 50, 0),
-(4, 1, 'dwadaw', 'adawd', 'adad', 'dawdawda', 55, 0);
+(4, 1, 'dwadaw', 'adawd', 'adad', 'dawdawda', 55, 0),
+(5, 4, 'English For Today', 'Shahadat Anik', '2.0', 'Anik Publication CTG', 200, 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +125,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `name`, `email`, `number`, `password`, `approved`) VALUES
 (1, 'fahim', 'Fahim', 'fahim@gmail.com', '01794798101', 'b94c5dbc799331f0ee036db0c145b5438b9a39dc6984ca5fa1260ca0170df32b', 1),
 (2, 'hasib', 'Hasib Ar Rafiul Fahim', 'fahad.com66.fk@gmail.com', '01794798101', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 1),
-(3, 'admin', 'Admin', 'admin@mail.com', '01794798101', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 0);
+(3, 'admin', 'Admin', 'admin@mail.com', '01794798101', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 0),
+(4, 'Anik', 'Shahadat Anik', 'anik@mail.com', '01521533595', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 1);
 
 --
 -- Indexes for dumped tables
@@ -159,25 +164,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borrow_book`
 --
 ALTER TABLE `borrow_book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `donate_book`
 --
 ALTER TABLE `donate_book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sell_book`
 --
 ALTER TABLE `sell_book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
