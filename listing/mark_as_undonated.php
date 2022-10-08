@@ -26,7 +26,7 @@ if (!$conn) {
 $id = $_GET['id'];
 $sql = "UPDATE donate_book SET donate_status = 0 WHERE id = '$id'";
 if (mysqli_query($conn, $sql)) {
-    header('location:listing.php');
+    header('location:index.php');
     } 
 else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

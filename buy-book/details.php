@@ -46,14 +46,26 @@ $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
                 <span><i class="fa fa-caret-square-o-down" aria-hidden="true"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../home.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-decoration-none" href="#">Link</a>
-                    </li>
-                </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../home.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../sell-book">Sell</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active border border-dark border-1 rounded fw-bold" aria-current="page" href="index.php">Buy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../borrow-book">Borrow</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../donate-book">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../listing">History</a>
+                        </li>
+                    </ul>
                 <div class="d-flex ">
                     <span class="navbar-text fw-bold fs-5 mx-2">
                         <i class="fa fa-user " aria-hidden="true"></i>

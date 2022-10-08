@@ -74,12 +74,24 @@ mysqli_close($conn);
                     <span><i class="fa fa-caret-square-o-down" aria-hidden="true"></i></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../home.php">Home</a>
+                            <a class="nav-link"  href="../home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-decoration-none" href="#">Link</a>
+                            <a class="nav-link" href="../sell-book">Sell</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../buy-book">Buy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active border border-dark border-1 rounded fw-bold" aria-current="page" href="index.php">Borrow</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../donate-book">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../listing">History</a>
                         </li>
                     </ul>
                     <div class="d-flex ">
