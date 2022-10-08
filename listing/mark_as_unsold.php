@@ -27,7 +27,7 @@ $id = $_GET['id'];
 $sql = "UPDATE sell_book SET sold_status = 0 WHERE id = '$id'";
 if (mysqli_query($conn, $sql)) {
     echo "Sold";
-    header('location:listing.php');
+    header('location:index.php');
     } 
 else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

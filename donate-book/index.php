@@ -47,7 +47,7 @@ if ($loggedin != 'true') {
                             <a class="nav-link" href="../borrow-book">Borrow</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="donate-book">Donate</a>
+                            <a class="nav-link active border border-dark border-1 rounded fw-bold" aria-current="page" href="">Donate</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../listing">History</a>
