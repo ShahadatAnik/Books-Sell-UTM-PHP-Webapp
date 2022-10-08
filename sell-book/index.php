@@ -77,7 +77,7 @@ mysqli_close($conn);
                             <a class="nav-link" href="../home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="sell-book">Sell</a>
+                            <a class="nav-link active border border-dark border-1 rounded fw-bold" aria-current="page" href="index.php">Sell</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../buy-book">Buy</a>
